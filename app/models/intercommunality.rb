@@ -12,4 +12,8 @@ class Intercommunality < ApplicationRecord
   def communes_hash
     self.communes.map { |c| [(c.code_insee).to_s, c.name] }.to_h
   end
+
+  def population
+    self.communes.sum(:population)
+  end
 end
